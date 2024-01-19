@@ -1,7 +1,9 @@
 package com.eliasmeireles.kafkalearning.domain.producer
 
-import com.eliasmeireles.kafkalearning.domain.model.Message
 import com.eliasmeireles.kafkalearning.domain.publisher.MessagePublisher
+import com.eliasmeireles.kafkalearning.model.Message
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Service
@@ -11,7 +13,7 @@ class MessageProducer(
     private val messagePublisher: MessagePublisher
 ) : ApplicationRunner {
 
-    private fun createMessage() {
+    private suspend fun createMessage() {
         val message = Message(
             id = System.currentTimeMillis(),
             title = "Title:: ${System.currentTimeMillis()}",
@@ -20,13 +22,12 @@ class MessageProducer(
 
         messagePublisher.publish(message)
 
-        Thread.sleep(250)
-
+        delay(250)
         createMessage()
     }
 
     override fun run(args: ApplicationArguments?) {
-        createMessage()
+        runBlocking { createMessage() }
     }
 
 }

@@ -11,8 +11,9 @@ import org.springframework.context.ApplicationContext
 class App(
     private val context: ApplicationContext,
 ) : ApplicationRunner {
-    override fun run(args: ApplicationArguments?) {
-        val port = context.environment.getProperty("server.port", Int::class.java, 8080)
+
+    override fun run(args: ApplicationArguments) {
+        val port = context.environment.getProperty("server.port", Int::class.java, 7090)
         val path = context.environment.getProperty("server.servlet.context-path", String::class.java, "/")
         kLogger.info("Application started on http://localhost:{}{}", port, path)
     }

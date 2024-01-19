@@ -1,4 +1,4 @@
-package com.eliasmeireles.kafkalearning.domain.model
+package com.eliasmeireles.kafkalearning.model
 
 data class Message(
     val id: Long,

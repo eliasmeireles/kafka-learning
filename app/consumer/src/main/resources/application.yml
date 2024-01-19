@@ -1,0 +1,16 @@
+server:
+  servlet:
+    context-path: "/api/kafka-learning/v1/"
+  port: 7090
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: kafka-learning
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializer
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8081

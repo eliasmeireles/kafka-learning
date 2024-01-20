@@ -31,9 +31,14 @@
 
 ## Startup
 
-> Kafaka Cluster
+> Kafka Cluster
 > ```shell
 >  make up-cluster
+> ```
+
+> When cluster is ready
+> ```shell
+>  make create-topic
 > ```
 
 > Producer
@@ -45,3 +50,12 @@
 > ```shell
 >  make up-consumer
 > ```
+
+## Extras
+
+> Run 1 producer and 4 consumers
+>
+> ```shell
+> make deploy-services
+> ```
+

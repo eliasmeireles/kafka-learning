@@ -1,0 +1,78 @@
+version: '3'
+services:
+  producer:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+      args:
+        JAR_FILE: ./app/producer/build/libs/producer-1.0.0.jar
+        PORT: 80
+    container_name: kafka-learning-producer
+    image: kafka-learning-producer
+    restart: always
+    network_mode: "host"
+    environment:
+      SERVER_PORT: 7770
+    deploy:
+      resources:
+        limits:
+          memory: 256G
+    ports:
+      - "7770:80"
+  
+  consumer-01:
+    image: consumer-image:latest
+    container_name: kafka-learning-consumer-01
+    restart: always
+    network_mode: "host"
+    environment:
+      SERVER_PORT: 7790
+    deploy:
+      resources:
+        limits:
+          memory: 256G
+    ports:
+      - "7780:80"
+
+  consumer-02:
+    container_name: kafka-learning-consumer-02
+    image: consumer-image:latest
+    restart: always
+    network_mode: "host"
+    environment:
+      SERVER_PORT: 7789
+    deploy:
+      resources:
+        limits:
+          memory: 256G
+    ports:
+      - "7789:80"
+  
+  consumer-03:
+    container_name: kafka-learning-consumer-03
+    image: consumer-image:latest
+    restart: always
+    network_mode: "host"
+    environment:
+      SERVER_PORT: 7788
+    deploy:
+      resources:
+        limits:
+          memory: 256G
+    ports:
+      - "7788:80"
+
+  consumer-04:
+    container_name: kafka-learning-consumer-04
+    image: consumer-image:latest
+    restart: always
+    network_mode: "host"
+    environment:
+      SERVER_PORT: 7787
+    deploy:
+      resources:
+        limits:
+          memory: 256G
+    ports:
+      - "7787:80"
+    

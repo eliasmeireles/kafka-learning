@@ -2,7 +2,6 @@ package com.eliasmeireles.kafkalearning.domain.producer
 
 import com.eliasmeireles.kafkalearning.domain.publisher.MessagePublisher
 import com.eliasmeireles.kafkalearning.model.Message
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
@@ -21,8 +20,6 @@ class MessageProducer(
         )
 
         messagePublisher.publish(message)
-
-        delay(250)
         createMessage()
     }
 

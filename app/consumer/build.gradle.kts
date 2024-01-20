@@ -18,6 +18,7 @@ repositories {
 dependencies {
     implementation(project(":model"))
     implementation(project(":protobuf"))
+    implementation(project(":kafka-connector"))
 
     implementation("io.confluent:kafka-protobuf-serializer:7.5.0")
     implementation("org.springframework.kafka:spring-kafka")

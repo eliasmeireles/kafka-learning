@@ -1,0 +1,20 @@
+FROM openjdk:19-alpine
+
+ARG PORT
+ARG JAR_FILE
+
+COPY $JAR_FILE /app.jar
+
+ENV KAFKA_SCHEMA_REGISTRY_URL="http://172.17.0.1:8081"
+ENV KAFKA_BOOTSTRAP_SERVERS="172.17.0.1:9092"
+
+ENV TZ America/Sao_Paulo
+
+ENV SERVER_PORT $PORT
+
+COPY $JAR_FILE /app.jar
+
+EXPOSE $PORT
+
+CMD java -jar /app.jar
+
